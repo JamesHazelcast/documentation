@@ -38,7 +38,7 @@ For help downloading Hazelcast <Variable name="enterprise-product-name" />, see 
 
 ### Known issues
 
-- **Rolling upgrade from 5.3.8 to 5.4 can fail**: A rolling upgrade from 5.3.8 to 5.4 fails if mastership passes between two 5.3.8 members. The new master logs `There is no suitable de-serializer for type 33554431`, and the replacement 5.4 member cannot join the cluster. To avoid the failure, roll back to 5.3.7 before you upgrade, or upgrade the master member last. See [Upgrade a 5.3.8 cluster to 5.4](../upgrade/rolling-upgrades/overview.mdx#upgrade-a-538-cluster-to-54).
+- **Rolling upgrade from 5.3.8 to 5.4 can fail**: A rolling upgrade from 5.3.8 to 5.4 fails if a 5.3.8 member becomes the master after a 5.4 member has joined the cluster. The new master logs `There is no suitable de-serializer for type 33554431`, and the replacement 5.4 member cannot join the cluster. To avoid the failure, roll back to 5.3.7 before you upgrade, or upgrade the master member last. See [Upgrade a 5.3.8 cluster to 5.4](../upgrade/rolling-upgrades/overview.mdx#upgrade-a-538-cluster-to-54).
 
 ## 5.4.4 {/* #5-4-4 */}
 

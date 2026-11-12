@@ -117,17 +117,15 @@ The cluster is now operating on the new codebase version: Both the codebase vers
 
 ## Upgrade a 5.3.8 cluster to 5.4
 
-A rolling upgrade from 5.3.8 to 5.4 fails if mastership passes from one 5.3.8 member to another 5.3.8 member during the upgrade. The master member is the oldest member in the cluster. When the master leaves, the next oldest member becomes the master. If the new master runs 5.3.8 and the member list includes a 5.4 member, the new master logs an exception similar to the following:
+A rolling upgrade from 5.3.8 to 5.4 fails if a 5.3.8 member becomes the master after a 5.4 member has joined the cluster. The new master logs an exception similar to the following, and the 5.4 member that replaces the old master cannot join the cluster:
 
 ```none
 com.hazelcast.nio.serialization.HazelcastSerializationException: There is no suitable de-serializer for type 33554431. This exception is likely caused by differences in the serialization configuration between members or between clients and members.
 ```
 
-The old master then stays in the member list after it shuts down. The 5.4 member that replaces it cannot join the cluster, and shuts down.
-
 To upgrade a 5.3.8 cluster to 5.4, use one of the following methods:
 - Roll back to 5.3.7 first. Perform a rolling restart that changes each member from 5.3.8 to 5.3.7, then perform a rolling upgrade from 5.3.7 to 5.4.5.
-- Upgrade the master member last. Each upgraded member rejoins the cluster as its youngest member. When you shut down the master after every other member runs 5.4, the next oldest member is a 5.4 member and becomes the master. Each member logs the member list when membership changes, and the master is the first member in that list.
+- Upgrade the master member last. The master is the oldest member in the cluster, and is the first member in the member list that each member logs when membership changes. When every other member runs 5.4, a 5.4 member becomes the master after the old master shuts down.
 
 :::warning
 
