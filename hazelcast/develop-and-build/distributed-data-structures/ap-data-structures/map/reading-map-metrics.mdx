@@ -240,7 +240,7 @@ fmt.Println("Value              :", entry.Value)
 
 ## Detect oversized entries
 
-An oversized entry is a map entry whose size is above the map's oversized entry threshold. Large entries can cause memory pressure and slow down migrations and WAN replication. Hazelcast reports writes of oversized entries in three map metrics and in a warning log. The size of an entry is the size of its serialized key plus the size of its serialized value.
+The size of an entry is the size of its serialized key plus the size of its serialized value. An oversized entry is a map entry whose size is above the map's oversized entry threshold. Large entries can cause memory pressure and slow down migrations and WAN replication. Hazelcast reports writes of oversized entries in three map metrics and in a warning log.
 
 ### Set the oversized entry threshold
 
