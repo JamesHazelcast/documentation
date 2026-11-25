@@ -16,7 +16,7 @@ By default, Management Center saves the following data in the `hazelcast-mc` dir
 - Configuration settings
 - Metrics
 
-You can configure Management Center to save this data in a different location, using the [`hazelcast.mc.home` property](./system-properties.mdx#hazelcast-mc-home).
+You can configure Management Center to save this data in a different location, using the [`hazelcast.mc.home` property](./system-properties.mdx#general).
 
 ## Ways to configure Management Center
 
@@ -66,7 +66,7 @@ Preconfigure Management Center before starting it. Use this method for the follo
 </tr>
 <tr>
 <td>[YAML declarative configuration file](./declarative-configuration/overview.mdx) (Beta)</td>
-<td>Declare cluster connections, the security provider, local users, sensitive-properties masking, and Prometheus authentication in a single file that Management Center applies automatically every time it starts. A GitOps-friendly alternative to `hz-mc conf` for these entities.</td>
+<td>Declare cluster connections, the security provider, local users, sensitive-properties masking, Prometheus authentication, and static `hazelcast.mc.*` settings in a single file that Management Center applies automatically every time it starts. A GitOps-friendly alternative to `hz-mc conf` and to passing system properties.</td>
 </tr>
 </tbody>
 </table>
